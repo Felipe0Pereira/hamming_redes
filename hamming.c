@@ -69,7 +69,7 @@ int32_t decodifica (unsigned long int block) {
     return decodded;
 }
 
-uint32_t encripta (uint32_t block) {
+uint32_t codifica (uint32_t block) {
     unsigned int codded = 0;
     unsigned int xor = 0;
 
@@ -123,7 +123,7 @@ int hamming_buffer(unsigned char *buffer, int buffer_size, uint32_t **buffer_sai
     for (int i = 0; i < saida_size; i++) {
         int bit_pos = i * BITS_PER_CHUNK; // calcula o inicio do proximo bloco de 26 bits
         uint32_t val = read_26_bits(buffer, bit_pos, buffer_size); // le o bloco de 26 bits a partir do bit_pos, nos bits menos significativos de val
-        uint32_t codded = encripta(val); // aplica hamming de 31 bits no bloco
+        uint32_t codded = codifica(val); // aplica hamming de 31 bits no bloco
         (*buffer_saida)[i] = codded;
     }
 
@@ -194,7 +194,7 @@ int main(int argc, char const *argv[]) {
         if (original_size < 0 || original_size > 0x3FFFFFF) return 1; // arquivo nao existe ou tamanho em bytes nao cabe em 26 bits
         
         // Codifica o tamanho do arquivo original
-        uint32_t size_block = encripta((uint32_t)original_size);
+        uint32_t size_block = codifica((uint32_t)original_size);
         for (int bit = 30; bit >= 0; bit--) {
             char c = ((size_block >> bit) & 1) ? '1' : '0';
             write(fd_write, &c, 1);
