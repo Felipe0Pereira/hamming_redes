@@ -34,8 +34,7 @@ Durante a execução, o usuário deve escolher:
 
 ## Limitações
 
-- O tamanho máximo do arquivo original é de 67.108.863 bytes (26 bits).
-- O programa usa leitura e escrita em blocos de 104 bytes por vez.
+- O tamanho máximo do arquivo original é de 64MB (26 bits de bloco).
 
 ## Estrutura do Código
 
