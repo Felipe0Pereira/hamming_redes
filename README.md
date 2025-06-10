@@ -1,4 +1,4 @@
-# Hamming 31 - Codificação e Decodificação
+# Hamming (31, 26) - Codificação e Decodificação
 
 Este programa implementa codificação e decodificação de arquivos usando o código de Hamming (31,26), que adiciona 5 bits de paridade a blocos de 26 bits de dados, totalizando 31 bits por bloco.
 
